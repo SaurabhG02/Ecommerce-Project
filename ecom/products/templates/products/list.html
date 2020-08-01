@@ -1,0 +1,39 @@
+{% extends "products/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<!-- <img src="{{ obj.image.url }}" class="card-img-top" alt="..."> -->
+<div class="container">
+    <div class="row justify-content-center">
+        {% for obj in object_list %}
+            <div class=" col-md-4">
+                <div class="card" style="width: 18rem;">
+                    {% if obj.image %}
+                    <img src="{{ obj.image.url }}" class="card-img-top" alt="...">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'product-detail' obj.slug %}">{{ obj.title }}</a></h5>
+                        <h5 class="rupee-icon">₹ {{ obj.price }}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Add to cart</a>
+                        <a href="{% url 'product-detail' obj.slug %}" class="btn btn-secondary">View</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- <a href="{{ obj.get_absolute_url }}">{{ obj.title }}   {{ obj.image.url }} </a><br> 
+<img src="{{ obj.image.url }}" class="card-img-top" alt="..."> -->
+
+
+
+{% endblock %}
+
+
+
